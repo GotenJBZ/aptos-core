@@ -22,7 +22,7 @@ use std::{
     str,
     time::{Duration, SystemTime, UNIX_EPOCH},
 };
-
+use arbitrary::Arbitrary;
 mod bn254_circom;
 mod circuit_constants;
 mod circuit_testcases;
@@ -159,7 +159,7 @@ impl KeylessSignature {
 ///
 /// This value should **NOT* be changed since on-chain addresses are based on it (e.g.,
 /// hashing with a larger pepper would lead to a different address).
-#[derive(Clone, Debug, Eq, PartialEq, Hash)]
+#[derive(Clone, Debug, Eq, PartialEq, Hash,Arbitrary)]
 pub struct Pepper(pub(crate) [u8; poseidon_bn254::BYTES_PACKED_PER_SCALAR]);
 
 impl Pepper {
