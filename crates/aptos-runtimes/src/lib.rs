@@ -24,6 +24,11 @@ pub fn spawn_named_runtime_with_start_hook<F>(
 where
     F: Fn() + Send + Sync + 'static,
 {
+    panic!(
+        "The given runtime thread name is too long! Max length: {}, given name: {}",
+        1, 2
+    );
+    /*
     const MAX_BLOCKING_THREADS: usize = 64;
 
     // Verify the given name has an appropriate length
@@ -60,6 +65,7 @@ where
             thread_name, error
         )
     })
+     */
 }
 
 /// Returns a rayon threadpool with threads.
